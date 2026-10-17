@@ -1,992 +1,244 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>VAIBHAV OUTLAW | Official Website</title>
-
-    <meta name="description"
-          content="VAIBHAV OUTLAW — Official creator website. Watch videos, explore content and follow the journey.">
-
-    <meta name="theme-color" content="#0a0a0a">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #080808;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 20px 7%;
-
-            background: rgba(8, 8, 8, 0.75);
-            backdrop-filter: blur(15px);
-
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            color: #ff3030;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #aaa;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        .nav-youtube {
-            padding: 10px 18px;
-            background: #ff0000;
-            color: white !important;
-            border-radius: 6px;
-            font-weight: bold;
-        }
-
-        .nav-youtube:hover {
-            background: #d90000 !important;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            position: relative;
-            overflow: hidden;
-
-            padding: 120px 7% 80px;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-
-            width: 600px;
-            height: 600px;
-
-            background: #ff0000;
-
-            filter: blur(180px);
-            opacity: 0.13;
-
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-
-            text-align: center;
-            max-width: 950px;
-        }
-
-        .small-label {
-            display: inline-block;
-
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.04);
-
-            padding: 8px 16px;
-            border-radius: 50px;
-
-            font-size: 12px;
-            letter-spacing: 2px;
-            color: #bbb;
-
-            margin-bottom: 25px;
-        }
-
-        .hero h1 {
-            font-size: clamp(55px, 11vw, 150px);
-            line-height: 0.9;
-            font-weight: 1000;
-            letter-spacing: -7px;
-
-            text-transform: uppercase;
-        }
-
-        .hero h1 span {
-            color: #ff2020;
-        }
-
-        .hero p {
-            max-width: 600px;
-            margin: 30px auto;
-
-            color: #999;
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 15px 25px;
-            border-radius: 7px;
-
-            font-weight: bold;
-            font-size: 14px;
-
-            transition: 0.3s;
-        }
-
-        .btn-primary {
-            background: #ff0000;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            background: #d90000;
-            box-shadow: 0 10px 30px rgba(255,0,0,0.25);
-        }
-
-        .btn-secondary {
-            border: 1px solid #333;
-            background: #111;
-        }
-
-        .btn-secondary:hover {
-            background: #1c1c1c;
-            transform: translateY(-3px);
-        }
-
-        /* =========================
-           MARQUEE
-        ========================= */
-
-        .marquee {
-            border-top: 1px solid #181818;
-            border-bottom: 1px solid #181818;
-
-            padding: 20px 0;
-
-            overflow: hidden;
-            white-space: nowrap;
-
-            color: #555;
-
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 3px;
-        }
-
-        .marquee-track {
-            display: inline-block;
-            animation: marquee 20s linear infinite;
-        }
-
-        .marquee span {
-            margin: 0 30px;
-        }
-
-        .marquee .red {
-            color: #ff2020;
-        }
-
-        @keyframes marquee {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* =========================
-           SECTIONS
-        ========================= */
-
-        section {
-            padding: 110px 7%;
-        }
-
-        .section-heading {
-            margin-bottom: 50px;
-        }
-
-        .section-heading small {
-            color: #ff3030;
-            letter-spacing: 3px;
-            font-weight: bold;
-            font-size: 11px;
-        }
-
-        .section-heading h2 {
-            font-size: clamp(35px, 5vw, 65px);
-            margin-top: 10px;
-            letter-spacing: -2px;
-        }
-
-        .section-heading p {
-            color: #777;
-            max-width: 550px;
-            margin-top: 15px;
-            line-height: 1.7;
-        }
-
-        /* =========================
-           VIDEOS
-        ========================= */
-
-        .videos {
-            background: #0c0c0c;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .video-card {
-            background: #111;
-            border: 1px solid #1d1d1d;
-            border-radius: 12px;
-            overflow: hidden;
-
-            transition: 0.35s;
-        }
-
-        .video-card:hover {
-            transform: translateY(-7px);
-            border-color: #333;
-        }
-
-        .thumbnail {
-            height: 210px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background:
-                radial-gradient(circle at center, #2c0000, #090909 60%);
-        }
-
-        .play {
-            width: 65px;
-            height: 65px;
-
-            border-radius: 50%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            background: #ff0000;
-
-            font-size: 22px;
-
-            transition: 0.3s;
-        }
-
-        .video-card:hover .play {
-            transform: scale(1.1);
-        }
-
-        .video-info {
-            padding: 22px;
-        }
-
-        .video-info h3 {
-            font-size: 18px;
-            margin-bottom: 9px;
-        }
-
-        .video-info p {
-            color: #666;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .watch {
-            display: inline-block;
-            margin-top: 18px;
-
-            color: #ff3030;
-            font-size: 13px;
-            font-weight: bold;
-        }
-
-        /* =========================
-           STATS
-        ========================= */
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .stat {
-            padding: 35px;
-
-            background: #0e0e0e;
-            border: 1px solid #1b1b1b;
-
-            border-radius: 12px;
-        }
-
-        .stat h3 {
-            font-size: 45px;
-        }
-
-        .stat p {
-            color: #666;
-            margin-top: 5px;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .about-title {
-            font-size: clamp(40px, 6vw, 80px);
-            line-height: 0.95;
-            letter-spacing: -4px;
-        }
-
-        .about-title span {
-            color: #ff2020;
-        }
-
-        .about-text {
-            color: #888;
-            line-height: 1.8;
-            margin-top: 25px;
-        }
-
-        .about-box {
-            min-height: 350px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 15px;
-
-            background:
-                linear-gradient(135deg, #171717, #080808);
-
-            border: 1px solid #222;
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-box::after {
-            content: "OUTLAW";
-
-            position: absolute;
-
-            font-size: 100px;
-            font-weight: 1000;
-
-            color: rgba(255,255,255,0.025);
-
-            transform: rotate(-15deg);
-        }
-
-        .about-logo {
-            position: relative;
-            z-index: 2;
-
-            font-size: 55px;
-            font-weight: 1000;
-            letter-spacing: -3px;
-        }
-
-        .about-logo span {
-            color: #ff0000;
-        }
-
-        /* =========================
-           CTA
-        ========================= */
-
-        .cta {
-            text-align: center;
-            background:
-                radial-gradient(circle at center, #250000, #080808 55%);
-        }
-
-        .cta h2 {
-            font-size: clamp(40px, 7vw, 90px);
-            line-height: 0.95;
-            letter-spacing: -4px;
-        }
-
-        .cta p {
-            color: #777;
-            margin: 25px auto 35px;
-            max-width: 550px;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            padding: 40px 7%;
-
-            border-top: 1px solid #1b1b1b;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            color: #555;
-            font-size: 13px;
-        }
-
-        footer strong {
-            color: #fff;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-links a:hover {
-            color: #fff;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 850px) {
-
-            nav {
-                padding: 17px 5%;
-            }
-
-            .nav-links a:not(.nav-youtube) {
-                display: none;
-            }
-
-            section {
-                padding: 80px 5%;
-            }
-
-            .hero {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            .hero h1 {
-                letter-spacing: -4px;
-            }
-
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .about-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .about-box {
-                min-height: 250px;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VAIBHAV_OUTLAW – Mad Out 2 Gaming</title>
+<meta name="description" content="Daily Mad Out 2 videos by VAIBHAV_OUTLAW. Promo code OUTLAW999 = 100K coins + 225 gems.">
+<style>
+:root{--bg:#07070c;--card:#12121b;--text:#f4f4fa;--muted:#9c9cb4;--red:#ff2d3d;--gold:#ffb800;--border:#24243a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+#bg{position:fixed;inset:0;z-index:-1}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:rgba(7,7,12,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+nav{display:flex;justify-content:space-between;align-items:center;height:62px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:1px}
+.logo img,.logo .av{width:34px;height:34px;border-radius:50%}
+nav ul{display:flex;gap:22px;list-style:none;color:var(--muted);font-size:.95rem}
+nav ul a:hover{color:#fff}
+@media(max-width:640px){nav ul{display:none}}
+
+/* hero */
+.hero{padding:70px 0 60px;text-align:center}
+.avatar{position:relative;width:170px;height:170px;margin:0 auto 24px}
+.avatar::before{content:"";position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(var(--red),var(--gold),var(--red));animation:spin 4s linear infinite;filter:blur(1px)}
+.avatar::after{content:"";position:absolute;inset:-3px;border-radius:50%;background:var(--bg)}
+.avatar img,.avatar .fallback{position:absolute;inset:0;z-index:2;width:100%;height:100%;border-radius:50%;object-fit:cover}
+.fallback{display:flex;align-items:center;justify-content:center;font-size:4.4rem;font-weight:900;background:linear-gradient(135deg,var(--red),#7a0010)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero h1{font-size:clamp(2.3rem,8vw,4.8rem);font-weight:900;letter-spacing:2px;line-height:1.1;text-shadow:0 0 30px rgba(255,45,61,.45)}
+.hero h1 span{color:var(--red)}
+.typed{height:2em;color:var(--gold);font-size:1.25rem;font-weight:700;margin:12px 0 26px}
+.typed::after{content:"|";animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 28px;border-radius:999px;font-weight:800;border:2px solid var(--red);cursor:pointer;font-size:1rem;color:#fff;background:transparent;transition:.2s}
+.btn.primary{background:var(--red);box-shadow:0 0 24px rgba(255,45,61,.5)}
+.btn.primary:hover{transform:translateY(-2px) scale(1.04)}
+.btn.ghost:hover{background:var(--red)}
+
+section{padding:60px 0}
+h2{font-size:1.9rem;margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:28px}
+
+/* videos */
+.featured{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;margin-bottom:26px}
+@media(max-width:800px){.featured{grid-template-columns:1fr}}
+.player{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:#000}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.fi{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.fi h3{font-size:1.3rem;line-height:1.3}
+.badge{align-self:flex-start;background:var(--red);font-size:.75rem;font-weight:800;padding:3px 12px;border-radius:999px;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(255,45,61,0)}0%{box-shadow:0 0 0 0 rgba(255,45,61,.6)}}
+.meta{color:var(--muted);font-size:.9rem}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:18px}
+.vcard{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .15s,border-color .2s;will-change:transform}
+.vcard:hover{border-color:var(--red)}
+.vcard .th{position:relative;aspect-ratio:16/9;background:#000}
+.vcard img{width:100%;height:100%;object-fit:cover;display:block}
+.vcard .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.4rem;opacity:0;background:rgba(0,0,0,.4);transition:.2s}
+.vcard:hover .play{opacity:1}
+.vcard .tx{padding:12px 14px}
+.vcard .tt{font-weight:700;font-size:.95rem;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.skeleton{height:200px;border-radius:14px;background:linear-gradient(90deg,#12121b,#1d1d2b,#12121b);background-size:200%;animation:sh 1.2s infinite}
+@keyframes sh{to{background-position:-200%}}
+
+/* promo */
+.promo{background:linear-gradient(135deg,#2a0a10,#1d1503);border:1px solid var(--gold);border-radius:22px;padding:42px 22px;text-align:center;box-shadow:0 0 40px rgba(255,184,0,.15)}
+.code{display:inline-block;margin:16px 0 8px;font-size:2.2rem;font-weight:900;letter-spacing:5px;color:var(--gold);border:2px dashed var(--gold);padding:8px 28px;border-radius:12px}
+.gold{background:var(--gold);color:#111;border-color:var(--gold)}
+.promo p b{color:var(--gold)}
+.uid{margin-top:20px;color:var(--muted)}
+.uid b{color:#fff;letter-spacing:1px}
+
+/* game */
+.game{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px 20px;text-align:center}
+.lights{display:flex;justify-content:center;gap:14px;margin:20px 0}
+.lights i{width:44px;height:44px;border-radius:50%;background:#2a2a38;transition:.1s}
+.lights i.r{background:var(--red);box-shadow:0 0 20px var(--red)}
+.lights i.g{background:#25e06b;box-shadow:0 0 26px #25e06b}
+#pad{user-select:none;padding:18px;border-radius:14px;border:2px solid var(--border);cursor:pointer;font-weight:800;font-size:1.1rem;background:#0c0c14}
+#pad.go{border-color:#25e06b}
+#res{margin-top:14px;font-size:1.2rem;min-height:1.8em;font-weight:700}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
+.card .ic{font-size:2rem}
+.card p{color:var(--muted);font-size:.95rem}
+footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;color:var(--muted);font-size:.88rem}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:50}
+</style>
 </head>
-
 <body>
-
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
-
-    <nav>
-
-        <a href="#" class="logo">
-            VAIBHAV<span>.</span>
-        </a>
-
-        <div class="nav-links">
-            <a href="#videos">Videos</a>
-            <a href="#about">About</a>
-
-            <a
-                class="nav-youtube"
-                href="https://www.youtube.com/@VAIBHAVOUTLAW"
-                target="_blank"
-                rel="noopener">
-                YouTube ↗
-            </a>
-        </div>
-
-    </nav>
-
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
-    <header class="hero">
-
-        <div class="hero-content">
-
-            <div class="small-label">
-                OFFICIAL CREATOR WEBSITE
-            </div>
-
-            <h1>
-                VAIBHAV<br>
-                <span>OUTLAW</span>
-            </h1>
-
-            <p>
-                Welcome to the official home of VAIBHAV OUTLAW.
-                Discover the latest videos, content and the journey
-                behind the channel.
-            </p>
-
-            <div class="buttons">
-
-                <a
-                    href="https://www.youtube.com/@VAIBHAVOUTLAW"
-                    target="_blank"
-                    rel="noopener"
-                    class="btn btn-primary">
-                    ▶ Watch on YouTube
-                </a>
-
-                <a
-                    href="#videos"
-                    class="btn btn-secondary">
-                    Explore Videos ↓
-                </a>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <!-- =========================
-         MARQUEE
-    ========================== -->
-
-    <div class="marquee">
-
-        <div class="marquee-track">
-
-            <span>VAIBHAV OUTLAW</span>
-            <span class="red">●</span>
-
-            <span>CREATE</span>
-            <span class="red">●</span>
-
-            <span>INSPIRE</span>
-            <span class="red">●</span>
-
-            <span>ENTERTAIN</span>
-            <span class="red">●</span>
-
-            <span>VAIBHAV OUTLAW</span>
-            <span class="red">●</span>
-
-            <span>CREATE</span>
-            <span class="red">●</span>
-
-            <span>INSPIRE</span>
-            <span class="red">●</span>
-
-            <span>ENTERTAIN</span>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         VIDEOS
-    ========================== -->
-
-    <section id="videos" class="videos">
-
-        <div class="section-heading">
-
-            <small>CONTENT</small>
-
-            <h2>Latest Videos.</h2>
-
-            <p>
-                Watch the latest content directly on the
-                VAIBHAV OUTLAW YouTube channel.
-            </p>
-
-        </div>
-
-
-        <div class="video-grid">
-
-
-            <article class="video-card">
-
-                <div class="thumbnail">
-                    <div class="play">▶</div>
-                </div>
-
-                <div class="video-info">
-
-                    <h3>Latest Video</h3>
-
-                    <p>
-                        Check out the latest upload on the
-                        VAIBHAV OUTLAW YouTube channel.
-                    </p>
-
-                    <a
-                        href="https://www.youtube.com/@VAIBHAVOUTLAW/videos"
-                        target="_blank"
-                        rel="noopener"
-                        class="watch">
-                        WATCH VIDEO →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <article class="video-card">
-
-                <div class="thumbnail">
-                    <div class="play">▶</div>
-                </div>
-
-                <div class="video-info">
-
-                    <h3>Popular Content</h3>
-
-                    <p>
-                        Explore the channel and discover
-                        popular videos and uploads.
-                    </p>
-
-                    <a
-                        href="https://www.youtube.com/@VAIBHAVOUTLAW/videos"
-                        target="_blank"
-                        rel="noopener"
-                        class="watch">
-                        EXPLORE →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <article class="video-card">
-
-                <div class="thumbnail">
-                    <div class="play">▶</div>
-                </div>
-
-                <div class="video-info">
-
-                    <h3>More From VAIBHAV</h3>
-
-                    <p>
-                        Head over to YouTube for the complete
-                        collection of videos.
-                    </p>
-
-                    <a
-                        href="https://www.youtube.com/@VAIBHAVOUTLAW"
-                        target="_blank"
-                        rel="noopener"
-                        class="watch">
-                        VISIT CHANNEL →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         STATS
-    ========================== -->
-
-    <section>
-
-        <div class="section-heading">
-
-            <small>THE CHANNEL</small>
-
-            <h2>Built around content.</h2>
-
-        </div>
-
-
-        <div class="stats">
-
-            <div class="stat">
-                <h3>01</h3>
-                <p>Official Channel</p>
-            </div>
-
-            <div class="stat">
-                <h3>∞</h3>
-                <p>Ideas & Content</p>
-            </div>
-
-            <div class="stat">
-                <h3>24/7</h3>
-                <p>Creator Energy</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-
-    <section id="about">
-
-        <div class="about-container">
-
-
-            <div>
-
-                <div class="section-heading">
-                    <small>ABOUT</small>
-                </div>
-
-                <h2 class="about-title">
-                    NOT JUST<br>
-                    A <span>CHANNEL.</span>
-                </h2>
-
-                <p class="about-text">
-                    VAIBHAV OUTLAW is a creator brand built around
-                    personality, content and community.
-
-                    <br><br>
-
-                    Follow the journey, watch the videos and become
-                    part of the community.
-                </p>
-
-                <br>
-
-                <a
-                    href="https://www.youtube.com/@VAIBHAVOUTLAW"
-                    target="_blank"
-                    rel="noopener"
-                    class="btn btn-primary">
-                    Subscribe on YouTube
-                </a>
-
-            </div>
-
-
-            <div class="about-box">
-
-                <div class="about-logo">
-                    V<span>O</span>
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         CTA
-    ========================== -->
-
-    <section class="cta">
-
-        <h2>
-            SEE YOU<br>
-            ON <span style="color:#ff0000;">YOUTUBE.</span>
-        </h2>
-
-        <p>
-            Don't miss the next upload.
-            Follow VAIBHAV OUTLAW on YouTube.
-        </p>
-
-        <a
-            href="https://www.youtube.com/@VAIBHAVOUTLAW"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-primary">
-            ▶ GO TO CHANNEL
-        </a>
-
-    </section>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div>
-            © 2026 <strong>VAIBHAV OUTLAW</strong>
-        </div>
-
-        <div class="footer-links">
-
-            <a
-                href="https://www.youtube.com/@VAIBHAVOUTLAW"
-                target="_blank"
-                rel="noopener">
-                YouTube
-            </a>
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#">
-                Top
-            </a>
-
-        </div>
-
-    </footer>
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <script>
-
-        // Small entrance animation
-
-        document.addEventListener("DOMContentLoaded", () => {
-
-            const hero = document.querySelector(".hero-content");
-
-            hero.style.opacity = "0";
-            hero.style.transform = "translateY(30px)";
-            hero.style.transition = "opacity 1s ease, transform 1s ease";
-
-            setTimeout(() => {
-
-                hero.style.opacity = "1";
-                hero.style.transform = "translateY(0)";
-
-            }, 150);
-
-        });
-
-
-        // Smooth reveal on scroll
-
-        const cards = document.querySelectorAll(
-            ".video-card, .stat, .about-box"
-        );
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target
+<canvas id="bg"></canvas>
+<canvas id="fx"></canvas>
+
+<header><div class="wrap"><nav>
+  <a href="#" class="logo"><span class="av" id="navav"></span> VAIBHAV<span style="color:var(--red)">_</span>OUTLAW</a>
+  <ul><li><a href="#videos">Videos</a></li><li><a href="#promo">Promo</a></li><li><a href="#game">Mini Game</a></li><li><a href="#about">About</a></li></ul>
+</nav></div></header>
+
+<div class="hero"><div class="wrap">
+  <div class="avatar" id="avatar"></div>
+  <h1>VAIBHAV<span>_</span>OUTLAW</h1>
+  <div class="typed" id="typed"></div>
+  <div class="btns">
+    <a class="btn primary" href="https://www.youtube.com/@VAIBHAVOUTLAW?sub_confirmation=1" target="_blank" rel="noopener">▶ Subscribe</a>
+    <a class="btn ghost" href="#videos">Watch Latest</a>
+    <a class="btn ghost" href="https://madout2.go.link/eS1fW" target="_blank" rel="noopener">⬇ Get Mad Out 2</a>
+  </div>
+</div></div>
+
+<section id="videos"><div class="wrap">
+  <h2>🔥 Latest Videos</h2>
+  <p class="sub">His newest uploads, straight from the channel. Tap any video to watch.</p>
+  <div id="featured"></div>
+  <div class="vgrid" id="vgrid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+  <div class="btns" style="margin-top:28px"><a class="btn ghost" href="https://www.youtube.com/@VAIBHAVOUTLAW/videos" target="_blank" rel="noopener">See all videos on YouTube →</a></div>
+</div></section>
+
+<section id="promo"><div class="wrap"><div class="promo">
+  <h2>🎁 Free Starter Bonus</h2>
+  <p>Enter this code in Mad Out 2 for <b>100K coins</b> + <b>225 gems</b></p>
+  <div class="code">OUTLAW999</div><br>
+  <button class="btn gold" id="copyBtn">Copy Code</button>
+  <p class="uid">Add me in game · UID <b>221 270 701</b></p>
+</div></div></section>
+
+<section id="game"><div class="wrap"><div class="game">
+  <h2>🏁 Outlaw Reaction Test</h2>
+  <p class="sub" style="margin-bottom:0">Wait for all lights to turn green, then tap. Can you beat 200 ms?</p>
+  <div class="lights"><i></i><i></i><i></i><i></i></div>
+  <div id="pad">TAP TO START</div>
+  <div id="res"></div>
+</div></div></section>
+
+<section id="about"><div class="wrap">
+  <h2>About</h2><p class="sub">Welcome to the VAIBHAV_OUTLAW channel ▶️🔥</p>
+  <div class="grid">
+    <div class="card"><div class="ic">🎮</div><h3>Gaming</h3><p>Mad Out 2 gameplay, races and wild moments.</p></div>
+    <div class="card"><div class="ic">📅</div><h3>2 Videos Daily</h3><p>Fresh Mad Out 2 uploads every single day.</p></div>
+    <div class="card"><div class="ic">📱</div><h3>Play It</h3><p>Free on Google Play and the App Store. Use code OUTLAW999.</p></div>
+  </div>
+</div></section>
+
+<footer>© <span id="yr"></span> VAIBHAV_OUTLAW · Fan-made website · Not affiliated with the Mad Out 2 developers</footer>
+
+<script>
+const CH='UCnD9Aug-rKZoKNsfRKXUUrg', H='VAIBHAVOUTLAW';
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- profile picture: profile.jpg -> auto fetch -> letter ---------- */
+const srcs=['profile.jpg','https://unavatar.io/youtube/'+H];
+function setAvatar(){
+  const box=document.getElementById('avatar'), nav=document.getElementById('navav');
+  const fb=()=>{box.insertAdjacentHTML('beforeend','<div class="fallback">V</div>');nav.style.cssText='background:var(--red);display:flex;align-items:center;justify-content:center;font-size:.9rem;width:34px;height:34px;border-radius:50%';nav.textContent='V'};
+  let i=0;const img=new Image();img.alt='VAIBHAV_OUTLAW';
+  img.onerror=()=>{i++;i<srcs.length?img.src=srcs[i]:fb()};
+  img.onload=()=>{box.appendChild(img);const n=img.cloneNode();n.style.cssText='width:34px;height:34px;border-radius:50%';nav.replaceWith(n)};
+  img.src=srcs[0];
+}
+setAvatar();
+
+/* ---------- typing effect ---------- */
+const lines=['Daily Mad Out 2 videos 🎮','Two uploads every day 🔥','Use code OUTLAW999 🎁','Smash that subscribe button ▶️'];
+let li=0,ci=0,del=false;const t=document.getElementById('typed');
+(function tick(){const s=lines[li];t.textContent=s.slice(0,ci);
+  if(!del&&ci++===s.length){del=true;return setTimeout(tick,1500)}
+  if(del&&--ci<0){del=false;ci=0;li=(li+1)%lines.length}
+  setTimeout(tick,del?35:70)})();
+
+/* ---------- live latest videos (YouTube RSS via rss2json) ---------- */
+const ago=d=>{const s=(Date.now()-new Date(d))/1000;
+  for(const[u,n]of[['year',31536e3],['month',2592e3],['day',86400],['hour',3600],['minute',60]])if(s>=n){const v=Math.floor(s/n);return v+' '+u+(v>1?'s':'')+' ago'}return 'just now'};
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* Hand-picked latest videos (used if the live feed can't load) */
+const MANUAL=[
+  {id:'qpSJ3Yc27no',title:'NEW UPDATE REVIEW + RIKSHAW GIVEAWAY #madout2',date:'2026-10-10T12:00:00Z'},
+  {id:'lHq5KZIp74g',title:'MADOUT 2 NEW UPDATE REVIEW #madout2',date:'2026-09-16T12:00:00Z'},
+  {id:'WLkTcDSOGoo',title:'MADOUT 2 NEW UPTADE REVIEW #madout2',date:'2026-09-14T12:00:00Z'}
+];
+function render(vids){
+  const f=vids[0], fresh=(Date.now()-new Date(f.date))<1728e5;
+  document.getElementById('featured').innerHTML=`<div class="featured">
+    <div class="player"><iframe src="https://www.youtube-nocookie.com/embed/${f.id}" title="${esc(f.title)}" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+    <div class="fi">${fresh?'<span class="badge">NEW UPLOAD</span>':'<span class="badge">LATEST</span>'}<h3>${esc(f.title)}</h3><div class="meta">Posted ${ago(f.date)}</div>
+    <a class="btn primary" style="text-align:center" href="https://www.youtube.com/watch?v=${f.id}" target="_blank" rel="noopener">Watch on YouTube</a></div></div>`;
+  document.getElementById('vgrid').innerHTML=vids.slice(1).map(v=>`<a class="vcard" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+    <div class="th"><img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt=""><div class="play">▶</div></div>
+    <div class="tx"><div class="tt">${esc(v.title)}</div><div class="meta">${ago(v.date)}</div></div></a>`).join('');
+  tilt();
+}
+render(MANUAL);  /* show these instantly, then upgrade to the live feed if available */
+async function loadVideos(){
+  try{
+    const rss='https://www.youtube.com/feeds/videos.xml?channel_id='+CH;
+    const r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rss));
+    const j=await r.json(); if(!j.items||!j.items.length)throw 0;
+    render(j.items.map(i=>({id:new URL(i.link).searchParams.get('v'),title:i.title,date:i.pubDate.replace(' ','T')+'Z'})));
+  }catch(e){/* keep the manual list */}
+}
+loadVideos();
+
+/* ---------- 3D tilt on video cards ---------- */
+function tilt(){document.querySelectorAll('.vcard').forEach(c=>{
+  c.onmousemove=e=>{const b=c.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;c.style.transform=`perspective(600px) rotateY(${x*12}deg) rotateX(${-y*12}deg) scale(1.03)`};
+  c.onmouseleave=()=>c.style.transform=''})}
+
+/* ---------- confetti ---------- */
+const fx=document.getElementById('fx'),fc=fx.getContext('2d');let parts=[];
+function sizeFx(){fx.width=innerWidth;fx.height=innerHeight}sizeFx();addEventListener('resize',sizeFx);
+function confetti(x,y){for(let i=0;i<110;i++)parts.push({x,y,vx:(Math.random()-.5)*14,vy:Math.random()*-13-3,r:Math.random()*6+3,c:['#ff2d3d','#ffb800','#fff','#25e06b'][i%4],l:100});run()}
+let running=false;function run(){if(running)return;running=true;(function f(){fc.clearRect(0,0,fx.width,fx.height);
+  parts=parts.filter(p=>p.l>0);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.l--;fc.fillStyle=p.c;fc.fillRect(p.x,p.y,p.r,p.r*1.6)});
+  parts.length?requestAnimationFrame(f):(running=false,fc.clearRect(0,0,fx.width,fx.height))})()}
+document.getElementById('copyBtn').onclick=function(e){
+  const b=this;(navigator.clipboard?navigator.clipboard.writeText('OUTLAW999'):Promise.resolve()).finally(()=>{b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy Code',2000)});
+  const r=b.getBoundingClientRect();confetti(r.left+r.width/2,r.top)};
+
+/* ---------- reaction game ---------- */
+(function(){const pad=document.getElementById('pad'),res=document.getElementById('res'),L=[...document.querySelectorAll('.lights i')];
+  let state='idle',timers=[],t0=0,best=+localStorage.getItem('best')||0;
+  const reset=()=>{timers.forEach(clearTimeout);L.forEach(l=>l.className='');pad.classList.remove('go')};
+  pad.onclick=()=>{
+    if(state==='idle'){reset();state='wait';pad.textContent='Wait for green…';res.textContent='';
+      L.forEach((l,i)=>timers.push(setTimeout(()=>l.className='r',(i+1)*600)));
+      timers.push(setTimeout(()=>{L.forEach(l=>l.className='g');state='go';t0=performance.now();pad.textContent='TAP NOW!';pad.classList.add('go')},L.length*600+800+Math.random()*2200))}
+    else if(state==='wait'){reset();state='idle';pad.textContent='TAP TO START';res.textContent='🚫 Jump start! Try again.'}
+    else if(state==='go'){const ms=Math.round(performance.now()-t0);state='idle';pad.textContent='TAP TO PLAY AGAIN';pad.classList.remove('go');
+      let m=ms<200?'🔥 Outlaw level!':ms<300?'⚡ Fast!':'🐢 Keep practising';
+      if(!best||ms<best){best=ms;try{localStorage.setItem('best',ms)}catch(e){};m+=' New best!';if(ms<300)confetti(innerWidth/2,innerHeight/2)}
+      res.textContent=ms+' ms · '+m+' · Best: '+best+' ms'}};})();
+
+/* ---------- animated speed-line background ---------- */
+(function(){const c=document.getElementById('bg'),x=c.getContext('2d');let w,h,ls=[];
+  const rs=()=>{w=c.width=innerWidth;h=c.height=innerHeight;ls=Array.from({length:45},()=>({x:Math.random()*w,y:Math.random()*h,l:40+Math.random()*120,s:3+Math.random()*7,c:Math.random()<.3?'255,184,0':'255,45,61'}))};rs();addEventListener('resize',rs);
+  (function f(){x.clearRect(0,0,w,h);ls.forEach(p=>{const g=x.createLinearGradient(p.x,p.y,p.x-p.l,p.y+p.l);g.addColorStop(0,`rgba(${p.c},.35)`);g.addColorStop(1,`rgba(${p.c},0)`);
+    x.strokeStyle=g;x.lineWidth=2;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(p.x-p.l,p.y+p.l);x.stroke();p.x+=p.s;p.y-=p.s;
+    if(p.x-p.l>w||p.y+p.l<0){p.x=Math.random()*w-w*.3;p.y=h+p.l}});requestAnimationFrame(f)})()})();
+</script>
+</body>
+</html>
